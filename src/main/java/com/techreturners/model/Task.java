@@ -3,12 +3,12 @@ package com.techreturners.model;
 public class Task {
     private String taskId;
     private String description;
-    private boolean complete;
+    private boolean completed;
 
-    public Task(String taskId, String description, boolean complete) {
+    public Task(String taskId, String description, boolean completed) {
         this.taskId = taskId;
         this.description = description;
-        this.complete = complete;
+        this.completed = completed;
     }
 
     public String getTaskId() {
@@ -20,6 +20,6 @@ public class Task {
     }
 
     public boolean isComplete() {
-        return complete;
+        return completed;
     }
 }

@@ -19,8 +19,9 @@ public class Handler implements RequestHandler<Map<String, Object>, ApiGatewayRe
 	@Override
 	public ApiGatewayResponse handleRequest(Map<String, Object> input, Context context) {
 		LOG.info("received: {}",  input);
-		Task t1 = new Task (taskId: "bcd1234", description:"Task Java", complete: false);
-		Task t2 = new Task (taskId: "bcd1235", description:"Task JavaScript", complete: false);
+		Task t1 = new Task ("bcd1234", "Task Java", false);
+		Task t2 = new Task ("bcd1235", "Task JavaScript", false);
+
 		List<Task> tasks = new ArrayList<>();
 		tasks.add(t1);
 		tasks.add(t2);
