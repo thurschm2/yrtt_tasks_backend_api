@@ -8,12 +8,15 @@ provider:
   lambdaHashingVersion: 20201221
   region: eu-west-2
   profile: serverless
+  apiGateway:
+    shouldStartNameWithService: true
+
 
 package:
-  artifact: target/hello-dev.jar
+  artifact: target/tasks-api-java-dev.jar
 
 functions:
-  tasks-api:
+  tasks-java-api:
     handler: com.techreturners.Handler
 
     events:
