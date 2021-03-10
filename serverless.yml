@@ -16,7 +16,7 @@ package:
   artifact: target/tasks-api-java-dev.jar
 
 functions:
-  tasks-java-api:
+  get-tasks-java-api:
     handler: com.techreturners.Handler
 
     events:

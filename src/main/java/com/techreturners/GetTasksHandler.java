@@ -21,15 +21,30 @@ public class Handler implements RequestHandler<APIGatewayProxyRequestEvent, APIG
 	@Override
 	public APIGatewayProxyResponseEvent handleRequest(APIGatewayProxyRequestEvent request, Context context) {
 		LOG.info("received: the request");
-		Task t1 = new Task ("bcd1234", "Task Java", false);
-		Task t2 = new Task ("bcd1235", "Task JavaScript", false);
-
+		
+		String userId = request.getPathParameters().get("userId");
 		List<Task> tasks = new ArrayList<>();
-		tasks.add(t1);
-		tasks.add(t2);
-
+		if(userId.equals("bcd123")) {
+			Task t1 = new Task ("abc1234", "Task Java", false);
+			tasks.add(t1);
+		}
+		else {
+			Task t2 = new Task ("abc567", "Task JavaScript", false);
+			tasks.add(t2);	
+		}
+		
 		APIGatewayProxyResponseEvent response = new APIGatewayProxyResponseEvent();
 		response.setStatusCode(200);
+
+		ObjectMapper objectMapper = new ObjectMapper();
+		try {
+			String responseBody = objectMapper.writeValueAsString(tasks);
+			response.setBody(responseBody);
+		}
+		catch(JsonProcessingException e) {
+			LOG.info("unable to marshall Tasks array", e);
+		}
+	
 		return response;
 	}
 }
