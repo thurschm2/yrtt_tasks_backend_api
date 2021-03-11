@@ -17,9 +17,15 @@ package:
 
 functions:
   get-tasks-java-api:
-    handler: com.techreturners.Handler
-
+    handler: com.techreturners.GetTasksHandler
     events:
       - http:
           path: /users/{userID}/tasks
           method: get
+
+ save-tasks-java-api:
+    handler: com.techreturners.SaveTasksHandler
+    events:
+      - http:
+          path: /users/{userID}/tasks
+          method: post
