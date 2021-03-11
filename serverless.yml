@@ -5,12 +5,15 @@ frameworkVersion: '2'
 provider:
   name: aws
   runtime: java8
-  lambdaHashingVersion: 20201221
   region: eu-west-2
   profile: serverless
+  environment:
+    DB_HOST: ${file(./config.dev.json):DB_HOST}
+    DB_NAME: ${file(./config.dev.json):DB_NAME}
+    DB_USER: ${file(./config.dev.json):DB_USER}
+    DB_PASSWORD: ${file(./config.dev.json):DB_PASSWORD}
   apiGateway:
     shouldStartNameWithService: true
-
 
 package:
   artifact: target/tasks-api-java-dev.jar
@@ -22,10 +25,10 @@ functions:
       - http:
           path: /users/{userID}/tasks
           method: get
-
- save-tasks-java-api:
-    handler: com.techreturners.SaveTasksHandler
-    events:
-      - http:
-          path: /users/{userID}/tasks
-          method: post
+#
+# save-tasks-java-api:
+#    handler: com.techreturners.SaveTasksHandler
+#    events:
+#      - http:
+#          path: /users/{userID}/tasks
+#          method: post

@@ -1,0 +1,6 @@
+{
+  "DB_HOST": "tasks-db.cqklo55dbmqm.eu-west-2.rds.amazonaws.com",
+  "DB_NAME": "tasks",
+  "DB_USER": "root",
+  "DB_PASSWORD": "Mstyrs7&"
+}
