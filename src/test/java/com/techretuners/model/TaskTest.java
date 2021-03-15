@@ -24,4 +24,11 @@ public class TaskTest {
         assertFalse(t.isCompleted() ,"task status was not false by default");
     }
 
+    @Test
+    @DisplayName("Ceeck Task ID GET")
+    public void testTaskId() {
+        Task t = new Task("abc123","some description", false);
+        assertEquals("abc123", t.getTaskId() , "task ID was incorrect");
+    }
+
 }
